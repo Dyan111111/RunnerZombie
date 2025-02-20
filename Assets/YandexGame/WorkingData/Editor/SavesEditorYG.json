@@ -1,0 +1,46 @@
+{
+    "idSave": 4278,
+    "isFirstSession": false,
+    "language": "ru",
+    "promptDone": false,
+    "money": 1,
+    "newPlayerName": "Hello!",
+    "openLevels": [
+        false,
+        true,
+        false
+    ],
+    "AllCoins": 130013,
+    "RecordDistance": 3231,
+    "LevelsSave": 11,
+    "wasBought": [
+        true,
+        true,
+        true,
+        true
+    ],
+    "PlayerIndex": 0,
+    "MusicSliderValue": 0.0,
+    "SoundSliderValue": 100.0,
+    "LastLoginKey": "2/18/2025 5:56:52 PM",
+    "CurrentQuest": {
+        "QuestNameRu": "Пробеги 100 метров",
+        "QuestNameEn": "Running 100 meters",
+        "QuestNameTr": "1000 metre koşmak",
+        "questType": 0,
+        "Reward": 100,
+        "QuestMax": 100,
+        "QuestNow": 100
+    },
+    "QuestWasComplete": true,
+    "DailyRewardIndex": 2,
+    "DailyRewardComplete": [
+        true,
+        true,
+        true,
+        false,
+        false,
+        false,
+        false
+    ]
+}

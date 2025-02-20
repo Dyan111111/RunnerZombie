@@ -1,0 +1,12 @@
+fileFormatVersion: 2
+guid: 8b009c387f463474084bc7f77fad7f32
+MonoImporter:
+  externalObjects: {}
+  serializedVersion: 2
+  defaultReferences:
+  - ZombieSound: {fileID: 8300000, guid: 50ac1376fac99334ebe00cff6dc10cf8, type: 3}
+  executionOrder: 0
+  icon: {instanceID: 0}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
