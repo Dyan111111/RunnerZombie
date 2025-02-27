@@ -36,6 +36,8 @@ public class CoinSpawner : MonoBehaviour
 
     public ScoreManager scoreManager;
 
+    public GameObject[] AlphabetLetter;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -109,7 +111,7 @@ public class CoinSpawner : MonoBehaviour
             }
         }
 
-        int rndChance = Random.Range(0, 4);//шанс на появление какоего либу бустера 
+        int rndChance = Random.Range(0, 2);//шанс на появление какоего либу бустера 
 
         if (rndChance == 0 && pointsSpawnerInfo.StatusPrefabs.Length > 0 && doubleCoins == false)
         {
@@ -117,23 +119,42 @@ public class CoinSpawner : MonoBehaviour
             {
                 if (i != rndLine && i != rndObstaclePos)
                 {
-                    int rndStatusChance = Random.Range(0, 10);
-
-                    if(rndStatusChance >= 0 && rndStatusChance < 4)// шанс на бейсболную биту 
+                    if (WordCollector.instance.IsWordEnd == false)
                     {
-                        GameObject baseballbet = Instantiate(pointsSpawnerInfo.StatusPrefabs[0], SpawenPoints[i].GetChild(Random.Range(0, 4)).transform.position, SpawenPoints[i].GetChild(Random.Range(0, 4)).transform.rotation, SpawnPoint);
+                        int rndLetterChance = Random.Range(0, 2);
 
-                        baseballbet.GetComponent<ChooseGun>().GunName = LevelManager.instance.GunName;
-                    }
+                        if (rndLetterChance == 0)
+                        {
+                            if (WordCollector.instance.currentLetterPrefab != null && WordCollector.instance.canCreateLetter == true)
+                            {
+                                GameObject letter = Instantiate(WordCollector.instance.currentLetterPrefab, SpawenPoints[i].GetChild(Random.Range(0, 4)).transform.position, SpawenPoints[i].GetChild(Random.Range(0, 4)).transform.rotation, SpawnPoint);
 
-                    else if (rndStatusChance >= 4 && rndStatusChance < 6)
-                    {
-                        GameObject magnet = Instantiate(pointsSpawnerInfo.StatusPrefabs[1], SpawenPoints[i].GetChild(Random.Range(0, 4)).transform.position, SpawenPoints[i].GetChild(Random.Range(0, 4)).transform.rotation, SpawnPoint);
+                                letter.transform.rotation = Quaternion.Euler(0f, 180f, 0f);
+                            }
+                        }
                     }
 
                     else
                     {
-                        GameObject x2 = Instantiate(pointsSpawnerInfo.StatusPrefabs[2], SpawenPoints[i].GetChild(Random.Range(0, 4)).transform.position, SpawenPoints[i].GetChild(Random.Range(0, 4)).transform.rotation, SpawnPoint);
+                        int rndStatusChance = Random.Range(0, 10);
+
+                        if (rndStatusChance >= 0 && rndStatusChance < 4)// шанс на бейсболную биту 
+                        {
+                            GameObject baseballbet = Instantiate(pointsSpawnerInfo.StatusPrefabs[0], SpawenPoints[i].GetChild(Random.Range(0, 4)).transform.position, SpawenPoints[i].GetChild(Random.Range(0, 4)).transform.rotation, SpawnPoint);
+
+                            baseballbet.GetComponent<ChooseGun>().GunName = LevelManager.instance.GunName;
+                        }
+
+                        else if (rndStatusChance >= 4 && rndStatusChance < 6)
+                        {
+                            GameObject magnet = Instantiate(pointsSpawnerInfo.StatusPrefabs[1], SpawenPoints[i].GetChild(Random.Range(0, 4)).transform.position, SpawenPoints[i].GetChild(Random.Range(0, 4)).transform.rotation, SpawnPoint);
+                        }
+
+                        else
+                        {
+                            GameObject x2 = Instantiate(pointsSpawnerInfo.StatusPrefabs[2], SpawenPoints[i].GetChild(Random.Range(0, 4)).transform.position, SpawenPoints[i].GetChild(Random.Range(0, 4)).transform.rotation, SpawnPoint);
+                        }
+
                     }
 
                     break;

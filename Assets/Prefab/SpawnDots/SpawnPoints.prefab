@@ -422,21 +422,13 @@ MonoBehaviour:
     CarPrefabs:
     - CarPrefab: {fileID: 6890150334131556415, guid: 400e4eb7ff61a4ca0ba10b3ed14367d1,
         type: 3}
-      Chance: 9
+      Chance: 40
     - CarPrefab: {fileID: 2970072287815296271, guid: c02cd83dabd8f4a599c99a5f917e5737,
         type: 3}
-      Chance: 10
-    - CarPrefab: {fileID: 6890150334131556415, guid: 01ea7fce6075b494fb8f06217368d2dc,
-        type: 3}
-      Chance: 30
-    - CarPrefab: {fileID: 6890150334131556415, guid: c330aea39bf684a759359bc192fb6713,
-        type: 3}
-      Chance: 70
-    - CarPrefab: {fileID: 6890150334131556415, guid: 419c1fc591f4944a784ed9beb872dd93,
-        type: 3}
-      Chance: 99
+      Chance: 50
   SpawnPoint: {fileID: 441675455252239813}
   scoreManager: {fileID: 0}
+  AlphabetLetter: []
 --- !u!1 &3888262975483371013
 GameObject:
   m_ObjectHideFlags: 0

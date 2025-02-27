@@ -1,5 +1,5 @@
 {
-    "idSave": 4278,
+    "idSave": 4710,
     "isFirstSession": false,
     "language": "ru",
     "promptDone": false,
@@ -10,7 +10,7 @@
         true,
         false
     ],
-    "AllCoins": 130013,
+    "AllCoins": 135157,
     "RecordDistance": 3231,
     "LevelsSave": 11,
     "wasBought": [
@@ -22,18 +22,18 @@
     "PlayerIndex": 0,
     "MusicSliderValue": 0.0,
     "SoundSliderValue": 100.0,
-    "LastLoginKey": "2/18/2025 5:56:52 PM",
+    "LastLoginKey": "2/27/2025 1:48:20 PM",
     "CurrentQuest": {
-        "QuestNameRu": "Пробеги 100 метров",
-        "QuestNameEn": "Running 100 meters",
-        "QuestNameTr": "1000 metre koşmak",
-        "questType": 0,
-        "Reward": 100,
-        "QuestMax": 100,
-        "QuestNow": 100
+        "QuestNameRu": "Собери 200 монет ",
+        "QuestNameEn": "Collect 200 coins",
+        "QuestNameTr": "200 jeton topla",
+        "questType": 2,
+        "Reward": 400,
+        "QuestMax": 200,
+        "QuestNow": 200
     },
-    "QuestWasComplete": true,
-    "DailyRewardIndex": 2,
+    "QuestWasComplete": false,
+    "DailyRewardIndex": 6,
     "DailyRewardComplete": [
         true,
         true,

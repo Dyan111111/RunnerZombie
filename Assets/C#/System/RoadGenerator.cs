@@ -3,18 +3,20 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using YG;
+using System;
+using Random = UnityEngine.Random;
 
 public class RoadGenerator : MonoBehaviour
 {
     [Header("Ночные")]
 
-    public GameObject[] CityPrefab;
+    public NightCityRoad NightCityPrefab;
 
     public GameObject[] SimpleCityPrefab;
 
-    public GameObject[] VillagePrefab;
+    public NightVillageRoad NightVillagePrefab;
 
-    public GameObject[] IndustrialPrefab;
+    public NightIndustrialRoad NightIndustrialPrefab;
 
     [Header("Дневные")]
 
@@ -99,61 +101,150 @@ public class RoadGenerator : MonoBehaviour
         }   
     }
 
-    public void RoadGenerate()
+    public void RoadGenerate()//генерация города 
     {
-        GameObject City = Instantiate(CityPrefab[Random.Range(0, CityPrefab.Length)], SpawnPosition, Quaternion.identity); //CityPrefab - это наш префаб, SpawnPosition - где мы спавнем префаб, Quaternion.identity - спавнем префаб в идентичном повороте нашей точки
+        if (NightCityPrefab.NeedNightCityStay == false)
+        {
+            int rndStay = Random.Range(0, 4);
 
-        City.transform.GetChild(0).GetComponent<RoadSpawnTrigger>().roadGenerator = this;
+            if (rndStay == 0)
+            {
+                NightCityPrefab.NeedNightCityStay = true;
+            }
 
-        SpawnPosition = SpawnPosition + new Vector3(0f, 0f, 18f); // прибавляем смещение по z координате на 20 метров к точке спавна
+            GameObject City = Instantiate(NightCityPrefab.CityPrefabMoveCar[Random.Range(0, NightCityPrefab.CityPrefabMoveCar.Length)], SpawnPosition, Quaternion.identity); //CityPrefab - это наш префаб, SpawnPosition - где мы спавнем префаб, Quaternion.identity - спавнем префаб в идентичном повороте нашей точки
 
-        CountCityPrefab++;
+            City.transform.GetChild(0).GetComponent<RoadSpawnTrigger>().roadGenerator = this;
 
-        PrefabTypeIndex = 1;
+            SpawnPosition = SpawnPosition + new Vector3(0f, 0f, 18f); // прибавляем смещение по z координате на 20 метров к точке спавна
 
-        Roads.Add(City);
+            CountCityPrefab++;
 
-        DestroyRoad();
+            PrefabTypeIndex = 1;
 
-        CheckCityPrefabs();
+            Roads.Add(City);
+
+            DestroyRoad();
+
+            CheckCityPrefabs();
+        }
+
+        else
+        {
+            GameObject City = Instantiate(NightCityPrefab.CityPrefabStayCar[Random.Range(0, NightCityPrefab.CityPrefabStayCar.Length)], SpawnPosition, Quaternion.identity); //CityPrefab - это наш префаб, SpawnPosition - где мы спавнем префаб, Quaternion.identity - спавнем префаб в идентичном повороте нашей точки
+
+            City.transform.GetChild(0).GetComponent<RoadSpawnTrigger>().roadGenerator = this;
+
+            SpawnPosition = SpawnPosition + new Vector3(0f, 0f, 18f); // прибавляем смещение по z координате на 20 метров к точке спавна
+
+            CountCityPrefab++;
+
+            PrefabTypeIndex = 1;
+
+            Roads.Add(City);
+
+            DestroyRoad();
+
+            CheckCityPrefabs();
+        }
+     
     }
 
     public void IndustriaGenerate() //я добавила 
     {
-        GameObject City = Instantiate(IndustrialPrefab[Random.Range(0, IndustrialPrefab.Length)], SpawnPosition, Quaternion.identity); //CityPrefab - это наш префаб, SpawnPosition - где мы спавнем префаб, Quaternion.identity - спавнем префаб в идентичном повороте нашей точки
+        if (NightIndustrialPrefab.NeedNightIndustrialStay == false)
+        {
+            int rndStay = Random.Range(0, 4);
 
-        City.transform.GetChild(0).GetComponent<RoadSpawnTrigger>().roadGenerator = this;
+            if (rndStay == 0)
+            {
+                NightIndustrialPrefab.NeedNightIndustrialStay = true;
+            }
 
-        SpawnPosition = SpawnPosition + new Vector3(0f, 0f, 18f); // прибавляем смещение по z координате на 20 метров к точке спавна
+            GameObject City = Instantiate(NightIndustrialPrefab.IndustrialPrefabMoveCar[Random.Range(0, NightIndustrialPrefab.IndustrialPrefabMoveCar.Length)], SpawnPosition, Quaternion.identity); //CityPrefab - это наш префаб, SpawnPosition - где мы спавнем префаб, Quaternion.identity - спавнем префаб в идентичном повороте нашей точки
 
-        CountCityPrefab++;
+            City.transform.GetChild(0).GetComponent<RoadSpawnTrigger>().roadGenerator = this;
 
-        PrefabTypeIndex = 2;
+            SpawnPosition = SpawnPosition + new Vector3(0f, 0f, 18f); // прибавляем смещение по z координате на 20 метров к точке спавна
 
-        Roads.Add(City);
+            CountCityPrefab++;
 
-        DestroyRoad();
+            PrefabTypeIndex = 2;
 
-        CheckCityPrefabs();
+            Roads.Add(City);
+
+            DestroyRoad();
+
+            CheckCityPrefabs();
+        }
+
+        else
+        {
+            GameObject City = Instantiate(NightIndustrialPrefab.IndustrialPrefabStayCar[Random.Range(0, NightIndustrialPrefab.IndustrialPrefabStayCar.Length)], SpawnPosition, Quaternion.identity); //CityPrefab - это наш префаб, SpawnPosition - где мы спавнем префаб, Quaternion.identity - спавнем префаб в идентичном повороте нашей точки
+
+            City.transform.GetChild(0).GetComponent<RoadSpawnTrigger>().roadGenerator = this;
+
+            SpawnPosition = SpawnPosition + new Vector3(0f, 0f, 18f); // прибавляем смещение по z координате на 20 метров к точке спавна
+
+            CountCityPrefab++;
+
+            PrefabTypeIndex = 2;
+
+            Roads.Add(City);
+
+            DestroyRoad();
+
+            CheckCityPrefabs();
+        }
+       
     }
 
     public void VillageGenerate()
     {
-        GameObject City = Instantiate(VillagePrefab[Random.Range(0, VillagePrefab.Length)], SpawnPosition, Quaternion.identity); //CityPrefab - это наш префаб, SpawnPosition - где мы спавнем префаб, Quaternion.identity - спавнем префаб в идентичном повороте нашей точки
+        if (NightVillagePrefab.NeedNightVillageStay == false)
+        {
+            int rndStay = Random.Range(0, 4);
 
-        City.transform.GetChild(0).GetComponent<RoadSpawnTrigger>().roadGenerator = this;
+            if (rndStay == 0)
+            {
+                NightVillagePrefab.NeedNightVillageStay = true;
+            }
 
-        SpawnPosition = SpawnPosition + new Vector3(0f, 0f, 18f); // прибавляем смещение по z координате на 20 метров к точке спавна
+            GameObject City = Instantiate(NightVillagePrefab.VillagePrefabMoveCar[Random.Range(0, NightVillagePrefab.VillagePrefabMoveCar.Length)], SpawnPosition, Quaternion.identity); //CityPrefab - это наш префаб, SpawnPosition - где мы спавнем префаб, Quaternion.identity - спавнем префаб в идентичном повороте нашей точки
 
-        CountCityPrefab++;
+            City.transform.GetChild(0).GetComponent<RoadSpawnTrigger>().roadGenerator = this;
 
-        PrefabTypeIndex = 0;
+            SpawnPosition = SpawnPosition + new Vector3(0f, 0f, 18f); // прибавляем смещение по z координате на 20 метров к точке спавна
 
-        Roads.Add(City);
+            CountCityPrefab++;
 
-        DestroyRoad();
+            PrefabTypeIndex = 0;
 
-        CheckCityPrefabs();
+            Roads.Add(City);
+
+            DestroyRoad();
+
+            CheckCityPrefabs();
+        }
+
+        else
+        {
+            GameObject City = Instantiate(NightVillagePrefab.VillagePrefabStayCar[Random.Range(0, NightVillagePrefab.VillagePrefabStayCar.Length)], SpawnPosition, Quaternion.identity); //CityPrefab - это наш префаб, SpawnPosition - где мы спавнем префаб, Quaternion.identity - спавнем префаб в идентичном повороте нашей точки
+
+            City.transform.GetChild(0).GetComponent<RoadSpawnTrigger>().roadGenerator = this;
+
+            SpawnPosition = SpawnPosition + new Vector3(0f, 0f, 18f); // прибавляем смещение по z координате на 20 метров к точке спавна
+
+            CountCityPrefab++;
+
+            PrefabTypeIndex = 0;
+
+            Roads.Add(City);
+
+            DestroyRoad();
+
+            CheckCityPrefabs();
+        }
     }
 
     public void SimpleRoadGenerate()// метод для спавна дорог без преград 
@@ -261,3 +352,55 @@ public class RoadGenerator : MonoBehaviour
         UIManager.instance.UpdateLevelText(LevelNow);
     }
 }
+
+[Serializable]
+
+public class NightCityRoad
+{
+    public bool NeedNightCityStay = false;
+
+    public int CountNightCityStay = 0;
+
+    [Header("Едущие машины")]
+
+    public GameObject[] CityPrefabMoveCar;
+
+    [Header("Стоящие машины")]
+
+    public GameObject[] CityPrefabStayCar;
+}
+
+[Serializable]
+
+public class NightVillageRoad
+{
+    public bool NeedNightVillageStay = false;
+
+    public int CountNightVillageStay = 0;
+
+    [Header("Едущие машины")]
+
+    public GameObject[] VillagePrefabMoveCar;
+
+    [Header("Стоящие машины")]
+
+    public GameObject[] VillagePrefabStayCar;
+}
+
+[Serializable]
+
+public class NightIndustrialRoad
+{
+    public bool NeedNightIndustrialStay = false;
+
+    public int CountNightIndustrialeStay = 0;
+
+    [Header("Едущие машины")]
+
+    public GameObject[] IndustrialPrefabMoveCar;
+
+    [Header("Стоящие машины")]
+
+    public GameObject[] IndustrialPrefabStayCar;
+}
+

@@ -17,7 +17,7 @@ public class WeaponLoader : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(LevelManager.instance.CanPushZombieBonus == true)
+        /* if(LevelManager.instance.CanPushZombieBonus == true)
         {
             Weapon.SetActive(true);
 
@@ -30,10 +30,12 @@ public class WeaponLoader : MonoBehaviour
 
             if(weaponTimer >= 4f)
             {
+                StatusSystem.Instance.SetStatus("Baseballbet", true);
+
                 Weapon.SetActive(false);
 
                 Destroy(this);
             }
-        }
+        }*/
     }
 }
